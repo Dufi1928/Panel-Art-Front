@@ -1,0 +1,87 @@
+.add-client-btn {
+  background-color: #5742aa;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.alert {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.alert-icon {
+  margin-right: 0.5rem;
+}
+
+.client-count {
+  text-align: right;
+  margin-bottom: 1rem;
+  color: #6c757d;
+}
+
+.client-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.client-card {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.client-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.client-info p {
+  margin: 0.25rem 0 0;
+  color: #6c757d;
+}
+
+.client-status {
+  display: flex;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+}
+
+.verified {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.unverified {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.table-count {
+  color: #6c757d;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
