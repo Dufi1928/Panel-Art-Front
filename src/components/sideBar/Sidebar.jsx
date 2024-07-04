@@ -1,7 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("jwt");
+
+    navigate("/login");
+  };
+
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -21,7 +31,9 @@ const Sidebar = () => {
         </ul>
       </nav>
       <div className="sidebar-footer">
-        <button className="logout-btn">Déconnexion</button>
+        <button className="logout-btn" onClick={handleLogout}>
+          Déconnexion
+        </button>
       </div>
     </aside>
   );
