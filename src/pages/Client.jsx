@@ -39,7 +39,6 @@ const Client = () => {
   }, []);
 
   if (loading) return <div>Chargement...</div>;
-  if (error) return <div>{error}</div>;
 
   return (
     <div className="dashboard">
