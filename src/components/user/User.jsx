@@ -1,9 +1,21 @@
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { jwtDecode } from "jwt-decode";
+import { login } from "../../actions/authActions.js"; // Assurez-vous que le chemin est correct
 import "./User.css";
 
 const User = () => {
+  const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
+
+  useEffect(() => {
+    if (!token) {
+      const storedToken = localStorage.getItem("jwt");
+      if (storedToken) {
+        dispatch(login(storedToken));
+      }
+    }
+  }, [dispatch, token]);
 
   if (!token) {
     console.log("Pas de token");
