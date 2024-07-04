@@ -4,6 +4,9 @@ import Sidebar from "../components/sideBar/Sidebar.jsx";
 import User from "../components/user/User.jsx";
 import "./Home.css";
 import "./Client.css";
+import TableCountIcon from "../icons/tableCount.jsx";
+import VerifiedIcon from "../icons/verified.jsx";
+import UnverifiedIcon from "../icons/unverified.jsx";
 
 const Client = () => {
   const [clients, setClients] = useState([]);
@@ -46,8 +49,9 @@ const Client = () => {
           <User />
         </header>
         <main className="main-content">
-          <button className="add-client-btn">Ajouter un client</button>
-
+          <div className="client-header">
+            <button className="add-client-btn">Ajouter un client</button>
+          </div>
           <div className="alert">
             <span className="alert-icon">⚠️</span>
             <p>
@@ -70,9 +74,17 @@ const Client = () => {
                       client.isVerified ? "verified" : "unverified"
                     }`}
                   >
+                    {client.isVerified ? (
+                      <VerifiedIcon size={16} />
+                    ) : (
+                      <UnverifiedIcon size={16} />
+                    )}{" "}
+                    &nbsp;
                     {client.isVerified ? "Vérifié" : "En attente"}
                   </span>
-                  <span className="table-count">{client.tableCount} 🗂️</span>
+                  <span className="table-count">
+                    <TableCountIcon size={16} />
+                  </span>
                 </div>
                 <button className="edit-btn">✏️</button>
               </div>
