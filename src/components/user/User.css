@@ -12,8 +12,10 @@
   align-items: center;
   justify-content: center;
   margin-right: 10px;
+  color: rgba(26, 0, 255, 0.7);
 }
 
 .user-name {
   font-weight: bold;
+  color: rgba(26, 0, 255, 0.7);
 }
