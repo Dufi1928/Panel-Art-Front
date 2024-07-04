@@ -1,6 +1,9 @@
 import React from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import "./Sidebar.css";
+import Categorie from "../../icons/category-2.jsx"
+import Gallery from "../../icons/gallery.jsx"
+import People from "../../icons/people.jsx";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -17,12 +20,13 @@ const Sidebar = () => {
       </div>
       <nav className="sidebar-nav">
         <ul>
-          <li>
+          <li className="menu-item">
+
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              <i className="icon-dashboard"></i> Tableau de bord
+              <Categorie/> Tableau de bord
             </NavLink>
           </li>
           <li>
@@ -30,7 +34,7 @@ const Sidebar = () => {
               to="/clients"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              <i className="icon-clients"></i> Clients
+              <People/> Clients
             </NavLink>
           </li>
           <li>
@@ -38,7 +42,7 @@ const Sidebar = () => {
               to="/tableaux"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              <i className="icon-tables"></i> Tableaux
+              <Gallery/>  Tableaux
             </NavLink>
           </li>
         </ul>

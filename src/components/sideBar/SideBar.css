@@ -25,14 +25,18 @@
 }
 
 .sidebar li a {
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  color: inherit;
-  display: block;
   cursor: pointer;
+  gap: 15px;
+  color: #5D5A88;
 }
-
-.sidebar li a.active {
-  color: #1a73e8;
+.active .sidebar-Icon path{
+  stroke: #302C66 !important;
+}
+.sidebar li a.active, .sidebar li a.active {
+  color: #302C66;
 }
 
 .sidebar-footer {
@@ -46,4 +50,8 @@
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
+}
+.menu-item{
+  display: flex;
+  align-items: center;
 }
