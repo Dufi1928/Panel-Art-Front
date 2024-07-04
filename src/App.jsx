@@ -14,6 +14,7 @@ function App() {
       <Route path="/" element={<ProtectedRoute />}>
         <Route index element={<Home />} />
         <Route path="/clients" element={<Client />} />
+        <Route path="/tableaux" element={<Client />} />
       </Route>
     </Routes>
   );
