@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .client-header {
   display: flex;
   justify-content: space-between;
@@ -5,6 +6,8 @@
   margin-bottom: 1rem;
 }
 
+=======
+>>>>>>> main
 .add-client-btn {
   background-color: #5742aa;
   color: white;
@@ -12,7 +15,10 @@
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
+<<<<<<< HEAD
   margin-left: 950px;
+=======
+>>>>>>> main
 }
 
 .alert {
@@ -75,6 +81,7 @@
 
 .verified {
   background-color: #d4edda;
+<<<<<<< HEAD
   color: white;
   margin-left: 30px;
   width: 90px;
@@ -85,10 +92,19 @@
   color: white;
   margin-left: 30px;
   width: 90px;
+=======
+  color: #155724;
+}
+
+.unverified {
+  background-color: #fff3cd;
+  color: #856404;
+>>>>>>> main
 }
 
 .table-count {
   color: #6c757d;
+<<<<<<< HEAD
   margin-left: 20px;
   padding: 0.25rem 0.5rem;
   border-radius: 12px;
@@ -97,6 +113,8 @@
   display: flex;
   align-items: center;
   background-color: #050badb7;
+=======
+>>>>>>> main
 }
 
 .edit-btn {
@@ -104,5 +122,8 @@
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
+<<<<<<< HEAD
   margin-left: 640px;
+=======
+>>>>>>> main
 }
