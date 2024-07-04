@@ -2,7 +2,7 @@ import Sidebar from "../components/sideBar/Sidebar.jsx";
 import User from "../components/user/User.jsx";
 import "./Home.css";
 
-const Client = () => {
+const Paints = () => {
   return (
     <div className="dashboard">
       <Sidebar />
@@ -16,4 +16,4 @@ const Client = () => {
   );
 };
 
-export default Client;
+export default Paints;
