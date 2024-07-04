@@ -1,6 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = () => {
@@ -8,7 +7,6 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("jwt");
-
     navigate("/login");
   };
 
@@ -19,14 +17,29 @@ const Sidebar = () => {
       </div>
       <nav className="sidebar-nav">
         <ul>
-          <li className="active">
-            <i className="icon-dashboard"></i> Tableau de bord
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              <i className="icon-dashboard"></i> Tableau de bord
+            </NavLink>
           </li>
           <li>
-            <i className="icon-clients"></i> Clients
+            <NavLink
+              to="/clients"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              <i className="icon-clients"></i> Clients
+            </NavLink>
           </li>
           <li>
-            <i className="icon-tables"></i> Tableaux
+            <NavLink
+              to="/tableaux"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              <i className="icon-tables"></i> Tableaux
+            </NavLink>
           </li>
         </ul>
       </nav>
