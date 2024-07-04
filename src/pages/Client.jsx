@@ -86,7 +86,7 @@ const Client = () => {
                     <TableCountIcon size={16} />
                   </span>
                 </div>
-                <button className="edit-btn">✏️</button>
+                <button className="edit-btn">✏️ </button>
               </div>
             ))}
           </div>
