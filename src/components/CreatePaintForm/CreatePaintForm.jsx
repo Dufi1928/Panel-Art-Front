@@ -1,8 +1,8 @@
 import React from "react";
-import "./EditPaintForm.css";
 import DropIcon from "../../icons/dropIcon.jsx";
+import "./CreatePaintForm.css";
 
-const EditModal = ({ paint, onClose, onChange, onSubmit }) => {
+const CreateEditPaintForm = ({ paint = {}, onClose, onChange, onSubmit }) => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         onChange({ ...paint, [name]: value });
@@ -35,6 +35,7 @@ const EditModal = ({ paint, onClose, onChange, onSubmit }) => {
     return (
         <div className="modal-overlay">
             <div className="modal-content">
+            <h2>Crrer un Tableau</h2>
                 <form onSubmit={onSubmit} className="edit-form">
                     <div className="form-row">
                         <label>
@@ -42,7 +43,7 @@ const EditModal = ({ paint, onClose, onChange, onSubmit }) => {
                             <input
                                 type="text"
                                 name="title"
-                                value={paint.title}
+                                value={paint.title || ''}
                                 onChange={handleInputChange}
                                 required
                             />
@@ -52,7 +53,7 @@ const EditModal = ({ paint, onClose, onChange, onSubmit }) => {
                             <input
                                 type="number"
                                 name="height"
-                                value={paint.height}
+                                value={paint.height || ''}
                                 onChange={handleInputChange}
                                 required
                             />
@@ -64,20 +65,19 @@ const EditModal = ({ paint, onClose, onChange, onSubmit }) => {
                             <input
                                 type="number"
                                 name="width"
-                                value={paint.width}
+                                value={paint.width || ''}
                                 onChange={handleInputChange}
                                 required
                             />
                         </label>
                         <label>
-                            Date de création
-                            <input
-                                type="date"
-                                name="createdAt"
-                                value={paint.createdAt.split('T')[0]}
+                            Description
+                            <textarea
+                                name="description"
+                                value={paint.description || ''}
                                 onChange={handleInputChange}
                                 required
-                            />
+                            ></textarea>
                         </label>
                     </div>
                     <div className="form-row">
@@ -85,40 +85,40 @@ const EditModal = ({ paint, onClose, onChange, onSubmit }) => {
                             Quantité
                             <select
                                 name="quantity"
-                                value={paint.quantity}
+                                value={paint.quantity || ''}
                                 onChange={handleInputChange}
                                 required
                             >
+                                <option value="">Sélectionner</option>
                                 <option value="disponible">Disponible</option>
                                 <option value="vendu">Vendu</option>
                             </select>
                         </label>
-                    </div>
-                    <div className="form-row">
                         <label>
-                            Description
-                            <textarea
-                                name="description"
-                                value={paint.description}
+                            Prix
+                            <input
+                                name="price"
+                                value={paint.price || ''}
                                 onChange={handleInputChange}
                                 required
-                            ></textarea>
+                            ></input>
                         </label>
-                        <label className="file-input-label">
-                            <div className="file-drop-area"
-                                 onDragOver={handleDragOver}
-                                 onDragLeave={handleDragLeave}
-                                 onDrop={handleDrop}>
-                                <input
-                                    type="file"
-                                    name="imagePath"
-                                    onChange={handleFileChange}
-                                />
-                                <DropIcon/>
-                                <b>Importer un fichier</b> <span>ou déposer le ici</span>
-                            </div>
-                        </label>
+
                     </div>
+                    <label className="file-input-label">
+                        <div className="file-drop-area"
+                             onDragOver={handleDragOver}
+                             onDragLeave={handleDragLeave}
+                             onDrop={handleDrop}>
+                            <input
+                                type="file"
+                                name="imagePath"
+                                onChange={handleFileChange}
+                            />
+                            <DropIcon/>
+                            <b>Importer un fichier</b> <span>ou déposer le ici</span>
+                        </div>
+                    </label>
                     {paint.imagePath && typeof paint.imagePath === 'object' && 'name' in paint.imagePath && (
                         <div className="image-preview-container">
                             <img src={URL.createObjectURL(paint.imagePath)} alt="Aperçu"/>
@@ -134,4 +134,4 @@ const EditModal = ({ paint, onClose, onChange, onSubmit }) => {
     );
 };
 
-export default EditModal;
+export default CreateEditPaintForm;
