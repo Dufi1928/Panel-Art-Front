@@ -11,7 +11,13 @@ import "./EditUser.css";
 const EditUser = () => {
   const [client, setClient] = useState(null);
   const [orders, setOrders] = useState([]);
-  const [stats, setStats] = useState({ totalSpent: 0, orderCount: 0 });
+  const [stats, setStats] = useState({
+    totalSpent: 0,
+    orderCount: 0,
+    paintingCount: 0,
+  });
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editData, setEditData] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
@@ -20,7 +26,6 @@ const EditUser = () => {
         const token = localStorage.getItem("jwt");
         const apiBaseUrl = import.meta.env.VITE_API_URL;
 
-        // Récupérer les détails du client
         const clientResponse = await axios.get(
           `${apiBaseUrl}/api/clients/${id}`,
           {
@@ -29,24 +34,25 @@ const EditUser = () => {
         );
         setClient(clientResponse.data);
 
-        // Récupérer toutes les commandes
         const ordersResponse = await axios.get(`${apiBaseUrl}/api/orders`, {
           headers: { Authorization: `${token}` },
         });
 
-        const clientOrders = ordersResponse.data.filter((order) => {
-          return order.client_id == id;
-        });
-
+        const clientOrders = ordersResponse.data.filter(
+          (order) => order.client_id == id
+        );
         setOrders(clientOrders);
 
-        // Calculer les statistiques
         const totalSpent = clientOrders.reduce(
           (sum, order) => sum + parseFloat(order.total_price),
           0
         );
         const orderCount = clientOrders.length;
-        setStats({ totalSpent, orderCount });
+        const paintingCount = clientOrders.reduce(
+          (sum, order) => sum + order.items.length,
+          0
+        );
+        setStats({ totalSpent, orderCount, paintingCount });
       } catch (error) {
         console.error("Erreur lors de la récupération des données:", error);
       }
@@ -54,6 +60,41 @@ const EditUser = () => {
 
     fetchClientDetails();
   }, [id]);
+
+  const openEditModal = () => {
+    setEditData({
+      email: client.email,
+      phone: client.phone,
+      adresse: client.adresse,
+      complement: client.complement,
+      postalCode: client.postalCode,
+      town: client.town,
+    });
+    setIsEditModalOpen(true);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const token = localStorage.getItem("jwt");
+      const apiBaseUrl = import.meta.env.VITE_API_URL;
+      await axios.put(`${apiBaseUrl}/api/clients/update/${id}`, editData, {
+        headers: { Authorization: `${token}` },
+      });
+      setClient(editData);
+      setIsEditModalOpen(false);
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour du client:", error);
+    }
+  };
 
   if (!client) return <div>Chargement...</div>;
 
@@ -66,9 +107,14 @@ const EditUser = () => {
         </header>
         <main className="main-content two-column-layout">
           <div className="client-info-column">
-            <h2>
-              {client.firstname} {client.lastname}
-            </h2>
+            <div className="client-header">
+              <h2>
+                {client.firstname} {client.lastname}
+              </h2>
+              <button onClick={openEditModal} className="edit-button">
+                Modifier
+              </button>
+            </div>
             <div className="client-details">
               <p>
                 <strong>Email :</strong> {client.email}
@@ -138,6 +184,75 @@ const EditUser = () => {
           </div>
         </main>
       </div>
+      {isEditModalOpen && (
+        <div className="edit-modal">
+          <div className="edit-modal-content">
+            <h2>Modifier les informations du client</h2>
+            <form onSubmit={handleEditSubmit}>
+              <label>
+                Email:
+                <input
+                  type="email"
+                  name="email"
+                  value={editData.email}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Téléphone:
+                <input
+                  type="tel"
+                  name="phone"
+                  value={editData.phone}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Adresse:
+                <input
+                  type="text"
+                  name="adresse"
+                  value={editData.adresse}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Complément:
+                <input
+                  type="text"
+                  name="complement"
+                  value={editData.complement}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Code Postal:
+                <input
+                  type="text"
+                  name="postalCode"
+                  value={editData.postalCode}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Ville:
+                <input
+                  type="text"
+                  name="town"
+                  value={editData.town}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <div className="form-actions">
+                <button type="submit">Sauvegarder</button>
+                <button type="button" onClick={() => setIsEditModalOpen(false)}>
+                  Annuler
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
