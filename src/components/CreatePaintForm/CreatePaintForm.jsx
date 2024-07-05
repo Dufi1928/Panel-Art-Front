@@ -105,29 +105,32 @@ const CreateEditPaintForm = ({ paint = {}, onClose, onChange, onSubmit }) => {
                         </label>
 
                     </div>
-                    <label className="file-input-label">
-                        <div className="file-drop-area"
-                             onDragOver={handleDragOver}
-                             onDragLeave={handleDragLeave}
-                             onDrop={handleDrop}>
-                            <input
-                                type="file"
-                                name="imagePath"
-                                onChange={handleFileChange}
-                            />
-                            <DropIcon/>
-                            <b>Importer un fichier</b> <span>ou déposer le ici</span>
-                        </div>
-                    </label>
-                    {paint.imagePath && typeof paint.imagePath === 'object' && 'name' in paint.imagePath && (
-                        <div className="image-preview-container">
-                            <img src={URL.createObjectURL(paint.imagePath)} alt="Aperçu"/>
-                        </div>
-                    )}
-                    <div className="form-buttons">
-                        <button type="submit">Valider</button>
-                        <button type="button" onClick={onClose}>Annuler</button>
+                    <div className="form-row">
+                        <label className="file-input-label">
+                            <div className="file-drop-area"
+                                 onDragOver={handleDragOver}
+                                 onDragLeave={handleDragLeave}
+                                 onDrop={handleDrop}>
+                                <input
+                                    type="file"
+                                    name="imagePath"
+                                    onChange={handleFileChange}
+                                />
+                                <DropIcon/>
+                                <b>Importer un fichier</b> <span>ou déposer le ici</span>
+                            </div>
+                        </label>
+                        {paint.imagePath && typeof paint.imagePath === 'object' && 'name' in paint.imagePath && (
+                            <div className="image-preview-create-container">
+                                <img src={URL.createObjectURL(paint.imagePath)} alt="Aperçu"/>
+                            </div>
+                        )}
                     </div>
+
+                        <div className="form-buttons">
+                            <button type="submit">Valider</button>
+                            <button type="button" onClick={onClose}>Annuler</button>
+                        </div>
                 </form>
             </div>
         </div>

@@ -205,6 +205,33 @@
 
 .edit-button {
   background-color: transparent;
-  border: 2px solid #5d5a88;
+  border: 2px solid;
   color: #5d5a88;
+  border-color: #5d5a88;
+}
+.edit-modal{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(50, 47, 77, 0.7);
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  .edit-modal-content{
+    display: flex;
+    flex-direction: column;
+    padding: 200px 100px ;
+    margin: auto;
+    width: 400px;
+    height: 300px;
+    align-self: center;
+    justify-content: center;
+    background: white;
+  }
+}
+.form-actions{
+  margin-top: 30px;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
 }
