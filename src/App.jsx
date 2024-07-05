@@ -8,6 +8,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Client from "./pages/Client";
 import Paints from "./pages/Paints";
 import EditUser from "./pages/EditUser";
+import AddUser from "./pages/AddUser";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/clients" element={<Client />} />
         <Route path="/tableaux" element={<Paints />} />
-        <Route path="/edit-user/:id" element={<EditUser />} />{" "}
+        <Route path="/edit-user/:id" element={<EditUser />} />
+        <Route path="/add-user" element={<AddUser />} />
       </Route>
     </Routes>
   );

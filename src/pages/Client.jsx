@@ -39,11 +39,16 @@ const Client = () => {
 
     fetchClients();
   }, []);
+
   // Fonction pour gérer le clic sur le bouton d'édition
   const handleEditClick = (clientId) => {
     navigate(`/edit-user/${clientId}`); // Rediriger vers la page d'édition du client
   };
 
+  // Fonction pour gérer le clic sur le bouton d'édition
+  const handleUserClick = () => {
+    navigate(`/add-user/`); // Rediriger vers la page d'édition du client
+  };
   if (loading) return <div>Chargement...</div>;
   if (error) return <div>{error}</div>;
 
@@ -56,7 +61,12 @@ const Client = () => {
         </header>
         <main className="main-content">
           <div className="client-header">
-            <button className="add-client-btn">Ajouter un client</button>
+            <button
+              className="add-client-btn"
+              onClick={() => handleUserClick()}
+            >
+              Ajouter un client
+            </button>
           </div>
           <div className="alert">
             <span className="alert-icon">⚠️</span>
