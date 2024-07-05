@@ -24,7 +24,7 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 210px;
+  height: 260px;
 }
 
 .paintings-column {
@@ -201,4 +201,11 @@
     flex-basis: 50%;
     margin-bottom: 1rem;
   }
+}
+
+.edit-button {
+  background-color: transparent;
+  border: 2px solid;
+  color: #5d5a88;
+  border-color: #5d5a88;
 }
