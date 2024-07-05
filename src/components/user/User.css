@@ -12,8 +12,10 @@
   align-items: center;
   justify-content: center;
   margin-right: 10px;
+  color: #5d5a88;
 }
 
 .user-name {
   font-weight: bold;
+  color: #5d5a88;
 }

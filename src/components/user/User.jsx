@@ -17,10 +17,10 @@ const User = () => {
     }
   }, [dispatch, token]);
 
-  if (!token) {
-    console.log("Pas de token");
-    return null;
-  }
+  // if (!token) {
+  //   console.log("Pas de token");
+  //   return null;
+  // }
 
   let decodedToken;
   try {
