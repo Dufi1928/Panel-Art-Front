@@ -34,6 +34,7 @@
 .paint-info{
     display: flex;
     align-items: center;
+    margin-left: 30px;
 
 }
 .paint-info-content{
@@ -67,12 +68,12 @@
 }
 .right-sideofline{
     display: flex;
+    max-width: 20%;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
 }
 .left-line-side{
-    width: 500px;
     display: flex;
     justify-content: space-between;
 }
@@ -132,4 +133,11 @@
         background: #4d4979;
     }
 
+}
+.icons-wraper{
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+    gap: 20px;
+    width: 100%;
 }

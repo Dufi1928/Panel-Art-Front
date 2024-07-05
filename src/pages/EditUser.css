@@ -205,7 +205,6 @@
 
 .edit-button {
   background-color: transparent;
-  border: 2px solid;
+  border: 2px solid #5d5a88;
   color: #5d5a88;
-  border-color: #5d5a88;
 }

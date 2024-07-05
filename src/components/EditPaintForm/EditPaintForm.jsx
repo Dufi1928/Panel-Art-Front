@@ -93,6 +93,16 @@ const EditModal = ({ paint, onClose, onChange, onSubmit }) => {
                                 <option value="vendu">Vendu</option>
                             </select>
                         </label>
+                        <label>
+                            Prix
+                            <input
+                                type="number"
+                                name="price"
+                                value={paint.price}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </label>
                     </div>
                     <div className="form-row">
                         <label>

@@ -10,6 +10,7 @@ import axios from "axios";
 import "./Paints.css"
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
+import RemoveIcon from "../icons/RemoveIcon.jsx";
 const Paints = () => {
 
     const [paints, setPaints] = useState([]);
@@ -23,6 +24,32 @@ const Paints = () => {
         setCurrentPaint(paint);
         setIsModalOpen(true);
     };
+    const handleRemouvePaint = async (id) => {
+        try {
+            const token = localStorage.getItem("jwt");
+            if (!token) {
+                throw new Error("Pas de token d'authentification");
+            }
+            const apiBaseUrl = import.meta.env.VITE_API_URL;
+            if (!apiBaseUrl) {
+                throw new Error("L'URL de l'API n'est pas définie");
+            }
+            const url = `${apiBaseUrl}/api/paintings/delete/${id}`;
+            await axios.delete(url, {
+                headers: {
+                    Authorization: `${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            // Actualiser la liste des peintures après la suppression
+            setPaints((prevPaints) => prevPaints.filter((paint) => paint.id !== id));
+        } catch (err) {
+            console.error("Erreur lors de la suppression de la peinture:", err);
+            setError(err.message || "Erreur lors de la suppression de la peinture");
+        }
+    };
+
     const handleCreatePaintChange = (updatedPaint) => setPaint(updatedPaint);
     const handleCreateOpenModal = () => setIsModalCreateOpen(true);
     const handleCreateCloseModal = () => setIsModalCreateOpen(false);
@@ -208,8 +235,13 @@ const Paints = () => {
 
                                 </div>
                                 <div className="right-sideofline">
-                                    <div onClick={() => handleEditClick(paint)} >
-                                        <EditIcon/>
+                                    <div className="icons-wraper">
+                                        <div onClick={() => handleEditClick(paint)}>
+                                            <EditIcon/>
+                                        </div>
+                                        <div onClick={() => handleRemouvePaint(paint.id)}>
+                                            <RemoveIcon/>
+                                        </div>
                                     </div>
                                     <h2 className="price">{paint.price} <span className="currency">€</span></h2>
                                 </div>
