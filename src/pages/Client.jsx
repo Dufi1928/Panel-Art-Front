@@ -50,7 +50,6 @@ const Client = () => {
     navigate(`/add-user/`); // Rediriger vers la page d'édition du client
   };
   if (loading) return <div>Chargement...</div>;
-  if (error) return <div>{error}</div>;
 
   return (
     <div className="dashboard">

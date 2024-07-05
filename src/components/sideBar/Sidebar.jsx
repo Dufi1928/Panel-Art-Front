@@ -4,6 +4,7 @@ import "./Sidebar.css";
 import Categorie from "../../icons/category-2.jsx"
 import Gallery from "../../icons/gallery.jsx"
 import People from "../../icons/people.jsx";
+import OrdersIcon from "../../icons/OrdersIcon.jsx";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -39,12 +40,20 @@ const Sidebar = () => {
           </li>
           <li>
             <NavLink
-              to="/tableaux"
-              className={({ isActive }) => (isActive ? "active" : "")}
+                to="/tableaux"
+                className={({isActive}) => (isActive ? "active" : "")}
             >
-              <Gallery/>  Tableaux
+              <Gallery/> Tableaux
             </NavLink>
           </li>
+            <li>
+              <NavLink
+                  to="/orders"
+                  className={({isActive}) => (isActive ? "active" : "")}
+              >
+                <OrdersIcon/> Commandes
+              </NavLink>
+            </li>
         </ul>
       </nav>
       <div className="sidebar-footer">

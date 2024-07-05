@@ -1,0 +1,135 @@
+.paints-ontainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.paint-Line{
+    width: 90%;
+    background: white;
+    min-height: 190px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+    padding: 15px 30px;
+    justify-content: space-between;
+}
+
+.paint-image{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-radius: 30px;
+    width: 250px;
+    position: relative;
+    img{
+        width: 250px;
+        height: 190px;
+        border-radius: 30px;
+        object-fit: cover;
+    }
+}
+
+.paint-info{
+    display: flex;
+    align-items: center;
+
+}
+.paint-info-content{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 190px;
+    h3{
+        color: #5D5A88;
+        margin: 0;
+        font-size: 1.1rem;
+    }
+}
+.pain-id{
+    width: 100%;
+    justify-content: flex-start;
+    display: flex;
+    font-size: 0.8rem;
+}
+.gray{
+    color: #9896B8;
+}
+.main-color{
+    color: #5D5A88;
+}
+.breackline{
+    width: 100%;
+    margin: 10px 0;
+    height: 1px;
+    background: #cccccc;
+}
+.right-sideofline{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.left-line-side{
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+}
+.currency{
+    font-size: 2.4rem;
+    color: #9896B8;
+}
+.price{
+    font-size: 2.4rem;
+    color: #5D5A88;
+}
+.editIcon path:hover{
+    stroke: #302C66;
+}
+.editIcon:hover{
+    cursor: pointer;
+}
+.quantity-indicator{
+    display: flex;
+    align-items:center;
+    height: 100%;
+}
+.indicator_inner{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #F2F1FA;
+    padding: 0 5px;
+    border-radius: 5px;
+    gap: 5px;
+    span{
+        font-size: 0.8rem;
+    }
+    svg{
+        width: 16px;
+        height: 16px;
+    }
+}
+.modal{
+    position: absolute;
+    left: 15px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.create-button{
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+    button{
+        margin-bottom: 30px;
+        max-width: 150px;
+        background: #5f6caf;
+    }
+    button:hover{
+        background: #4d4979;
+    }
+
+}
